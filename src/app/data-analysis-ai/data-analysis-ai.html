@@ -1,0 +1,83 @@
+<div class="chat-header">
+  <div class="img-name">
+    <img src="/botlogo.png" alt="bot-logo" />
+    <h2 class="chat-name">Data Analysis with AugAI</h2>
+  </div>
+  <div class="header-add-btn">
+    <button (click)="openTablesPopup()">Tables</button>
+  </div>
+</div>
+
+<div class="chat-container">
+  <div class="chat-messages" #chatWindow>
+    <!-- Messages -->
+    <div
+      class="chat-bubble"
+      *ngFor="let message of messages; trackBy: trackByMessage"
+      [ngClass]="message.role"
+    >
+      <!-- File Message -->
+      <ng-container *ngIf="message.file; else textMessage">
+        <div class="file-message">
+          📎 <span>{{ message.file.name }}</span>
+        </div>
+      </ng-container>
+
+      <!-- Text/Markdown Message -->
+      <ng-template #textMessage>
+        <ng-container *ngIf="message.role === 'assistant'; else userText">
+          <div class="response-box">
+            <markdown [data]="message.content"></markdown>
+          </div>
+        </ng-container>
+
+        <ng-template #userText>
+          {{ message.content }}
+        </ng-template>
+      </ng-template>
+    </div>
+
+    <!-- Typing Indicator -->
+    <div class="chat-bubble assistant" *ngIf="loading">
+      <div class="typing-indicator">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Input Area -->
+  <div class="chat-input">
+    <!-- File Upload -->
+
+
+    <!-- Text Input -->
+    <input
+      type="text"
+      [(ngModel)]="userInput"
+      (keydown.enter)="sendMessage()"
+      placeholder="Type your message..."
+    />
+
+    <!-- Send Button -->
+    <button (click)="sendMessage()">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        height="35px"
+        viewBox="0 -960 960 960"
+        width="30px"
+        fill="black"
+      >
+        <path
+          d="M120-160v-640l760 320-760 320Zm80-120 474-200-474-200v140l240 60-240 60v140Zm0 0v-400 400Z"
+        />
+      </svg>
+    </button>
+  </div>
+</div>
+<app-table-popup
+  [tables]="tables"
+  [isOpen]="showTablesPopup"
+  (closed)="showTablesPopup = false"
+  (tableSelected)="sendTableToChat($event)">
+</app-table-popup>
+

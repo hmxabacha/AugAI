@@ -1,0 +1,31 @@
+
+<body>
+  <div class="background-layer"></div>
+
+  <div class="main-container">
+    <img class="logo" src="/logo.png" alt="logo" width="150px">
+    <div class="left-side">
+      <a class="about-us" href="#">About Us</a>
+    </div>
+
+    <div class="right-side">
+      <form class="form-box" (ngSubmit)="login()" #loginForm="ngForm">
+        <p class="signin-heading">Sign In</p>
+        <input type="email" placeholder="Email" [(ngModel)]="email" name="email" #emailInput="ngModel" required=""/>
+        @if (emailInput.invalid && emailInput.touched) {
+          <div class="error">
+            Email is required.
+          </div>
+        }
+        <input type="password" placeholder="Password" [(ngModel)]="password" name="password" #passwordInput="ngModel" required=""/>
+        @if (passwordInput.invalid && passwordInput.touched) {
+          <div class="error">
+            Password is required.
+          </div>
+        }
+        <button type="submit" [disabled]="loginForm.invalid">Log in</button>
+      </form>
+    </div>
+
+  </div>
+</body>

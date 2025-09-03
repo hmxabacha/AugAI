@@ -1,0 +1,125 @@
+/* Container to get rounded corners around the whole table */
+.table-wrap {
+  background: #fff;
+  border: 1px solid #e5e7eb;        /* outer border */
+  border-radius: 12px;               /* rounded card */
+  overflow: hidden;                  /* clip table corners */
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  overflow-y: auto;
+
+}
+
+/* The table itself */
+.table {
+  max-width: 100%;
+  border-collapse: collapse;         /* single-line borders */
+  table-layout: fixed;               /* consistent column widths */
+  font-size: 14px;
+  overflow-y: auto;
+  max-height: 50%;
+}
+
+/* Header */
+.table thead th {
+  text-align: center;
+  background: #f8fafc;              /* light header background */
+  color: #111827;
+  text-align: left;
+  padding: 12px 50px;
+  border-bottom: 1px solid #e5e7eb;  /* header bottom border */
+  border-right: 1px solid #e5e7eb;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Body cells */
+.table tbody td {
+  text-align: center;
+  padding: 12px 20px;
+  border-bottom: 1px solid #f1f5f9;  /* row separators */
+  color: #1f2937;
+  word-break: break-word;
+  border-right: 1px solid #e5e7eb;
+
+}
+
+/* Zebra rows */
+.table tbody tr:nth-child(odd) {
+  background: #ffffff;
+}
+.table tbody tr:nth-child(even) {
+  background: #fbfdff;
+}
+
+/* Row hover */
+.table tbody tr:hover {
+  background: #eef6ff;
+}
+
+/* First/last column subtle borders (optional) */
+.table td:first-child, .table th:first-child {
+  border-left: 0;
+}
+.table td:last-child, .table th:last-child {
+  border-right: 0;
+}
+
+/* Buttons inside table */
+.table .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background: #fff;
+  cursor: pointer;
+}
+.table .btn:hover {
+  background: #f3f4f6;
+}
+
+/* Make it scroll nicely on narrow screens */
+.table-scroll {
+  width: 100%;
+  overflow-x: auto;
+}
+
+/* Optional sticky header for long lists */
+.table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+/* Dark mode (optional) */
+@media (prefers-color-scheme: dark) {
+  .table-wrap {
+    background: #0b0f14;
+    border-color: #1f2937;
+    box-shadow: none;
+  }
+  .table thead th {
+    background: #0f1620;
+    color: #e5e7eb;
+    border-bottom-color: #1f2937;
+  }
+  .table tbody td {
+    color: #d1d5db;
+    border-bottom-color: #13202e;
+  }
+  .table tbody tr:nth-child(even) {
+    background: #0d131b;
+  }
+  .table tbody tr:hover {
+    background: #0f1b29;
+  }
+  .table .btn {
+    background: #0f1620;
+    border-color: #263445;
+    color: #e5e7eb;
+  }
+  .table .btn:hover {
+    background: #0b121b;
+  }
+}

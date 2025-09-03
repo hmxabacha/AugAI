@@ -1,0 +1,29 @@
+<div class="table-wrap">
+  <div class="table-scroll">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Uploaded At</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let f of files; trackBy: trackByName">
+          <td>{{ f.fileName }}</td>
+
+          <!-- ✅ Angular conditional rendering -->
+            <td *ngIf="f.fileType?.includes('application/pdf')">PDF</td>
+            <td *ngIf="f.fileType?.includes('spreadsheet') || f.fileType?.includes('excel')">Excel</td>
+            <td *ngIf="f.fileType?.includes('txt') || f.fileType?.includes('text/plain')">TXT</td>
+
+          <td>{{ f.uploadedAt | date:'short' }}</td>
+          <td>
+            <button class="btn" (click)="reuseFile(f)">Reuse</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

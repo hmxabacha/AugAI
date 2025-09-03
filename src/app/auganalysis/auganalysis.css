@@ -1,0 +1,155 @@
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 12px;
+  font-size: 14px;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 8px 12px;
+  text-align: center;
+}
+
+th {
+  background: #f4f4f4;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+tr:nth-child(even) {
+  background: #fafafa;
+}
+
+
+/* Chat Bubbles */
+.chat-bubble {
+  max-width: 70%;
+  padding: 10px 14px;
+  border-radius: 12px;
+  word-wrap: break-word;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.chat-bubble.user {
+  align-self: flex-end;
+  background: #e0f7fa;
+  border-radius: 12px 12px 0 12px;
+}
+
+.chat-bubble.assistant {
+  align-self: flex-start;
+  background: #f1f1f1;
+  border-radius: 12px 12px 12px 0;
+}
+
+/* File Message */
+.file-message {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #eef3fc;
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-size: 13px;
+}
+
+/* Assistant Markdown Response */
+.response-box {
+  background: #f9f9f9;
+  padding: 10px;
+  border-radius: 8px;
+  overflow-x: auto;
+
+}
+
+/* Typing Indicator */
+.typing-indicator {
+  display: flex;
+  gap: 4px;
+  margin: 4px 0;
+}
+
+.typing-indicator span {
+  width: 8px;
+  height: 8px;
+  background: #888;
+  border-radius: 50%;
+  animation: blink 1.4s infinite both;
+}
+
+.typing-indicator span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.typing-indicator span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes blink {
+  0%,
+  80%,
+  100% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+}
+
+/* Input Area */
+.chat-input {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-top: 1px solid #ddd;
+  background: #fff;
+}
+
+.modal-overlay {
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(1px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1; /* very high to sit above chat */
+}
+
+.modal-content {
+
+  background: white;
+  padding:70px 20px 20px 20px;
+  border-radius: 12px;
+  min-width: 500px;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+  position: relative;
+}
+
+
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 4px 4px 1px 4px;
+  border-radius: 6px;
+  z-index: 10000;
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+table{
+  border: 1px solid black;
+}
+

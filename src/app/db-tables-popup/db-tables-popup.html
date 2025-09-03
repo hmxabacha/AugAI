@@ -1,0 +1,27 @@
+<div class="popup-backdrop" *ngIf="isOpen" (click)="close()"></div>
+
+<div class="popup" *ngIf="isOpen">
+  <div class="popup-header">
+    <h2>Database Tables</h2>
+    <button class="close-btn" (click)="close()">✕</button>
+  </div>
+
+  <div class="table-wrap">
+    <div class="table-scroll">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Table Name</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let tbl of tables">
+            <td>{{ tbl.name }}</td>
+            <td><button class="btn" (click)="tableSelected.emit(tbl)">Select</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

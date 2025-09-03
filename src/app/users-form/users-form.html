@@ -1,0 +1,60 @@
+<div class="user-form-container">
+  <h2>{{ isEditMode ? 'Edit User' : 'Add User' }}</h2>
+
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+
+    <!-- Employee Name -->
+    <div class="form-field">
+      <input type="text" formControlName="userName" placeholder="Employee Name"/>
+      <span class="error" *ngIf="isFieldInvalid('userName')">
+        {{ getFieldError('userName') }}
+      </span>
+    </div>
+
+    <!-- Email -->
+    <div class="form-field">
+      <input type="email" formControlName="email" placeholder="Email"/>
+      <span class="error" *ngIf="isFieldInvalid('email')">
+        {{ getFieldError('email') }}
+      </span>
+    </div>
+
+    <!-- Security Group -->
+    <div class="form-field">
+      <select formControlName="groupName">
+        <option value="">Select group</option>
+        <option *ngFor="let group of data.securityGroups" [value]="group.groupName">
+          {{ group.groupName }}
+        </option>
+      </select>
+      <span class="error" *ngIf="isFieldInvalid('groupName')">
+        {{ getFieldError('groupName') }}
+      </span>
+    </div>
+
+    <!-- Password -->
+    <div class="form-field">
+      <input type="password" formControlName="password" placeholder="Password"/>
+      <span class="error" *ngIf="isFieldInvalid('password')">
+        {{ getFieldError('password') }}
+      </span>
+    </div>
+
+    <!-- Confirm Password (uncomment if needed) -->
+    <!--
+    <div class="form-field">
+      <input type="password" formControlName="confirmPassword" placeholder="Confirm Password"/>
+      <span class="error" *ngIf="isFieldInvalid('confirmPassword')">
+        {{ getFieldError('confirmPassword') }}
+      </span>
+    </div>
+    -->
+
+    <!-- Buttons -->
+    <div class="form-actions">
+      <button type="submit" [disabled]="isFormInvalid()">Add</button>
+      <button type="button" (click)="onCancel()">Cancel</button>
+    </div>
+
+  </form>
+</div>

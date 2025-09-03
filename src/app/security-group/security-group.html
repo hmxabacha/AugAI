@@ -1,0 +1,54 @@
+
+<div class="table-header">
+  <h2 class="table-name">Security Groups</h2>
+  <button class="add-btn" (click)="addSecurityGroup()">Add New</button>
+</div>
+
+<div class="search-box">
+  <div></div>
+  <div class="search-input">
+    <input
+    type="text"
+    placeholder="Search.."
+    [(ngModel)]="searchTerm"
+    (keyup)="updateFilter()"
+    />
+  </div>
+</div>
+
+@if (isBrowser) {
+  <ngx-datatable
+    class="material"
+    [rows]="filteredUsers"
+    [columns]="columns"
+    columnMode="force"
+    scrollbarH="true"
+    [headerHeight]="50"
+    [footerHeight]="50"
+    rowHeight="auto"
+    [limit]="pageSize"
+    >
+
+    <!-- Default columns -->
+  <ngx-datatable-column name="Group Name" prop="groupName" [width]="150"></ngx-datatable-column>
+  <ngx-datatable-column name="Description" prop="description" [width]="150"></ngx-datatable-column>
+
+
+  <!-- Actions column -->
+
+    <ngx-datatable-column name="Actions">
+      <ng-template let-row="row" ngx-datatable-cell-template>
+        <button (click)="editSecurityGroup(row)" class="edit-btn"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+          width="24px" fill="black">
+          <path d="M200-200h57l391-391-57-57-391 391v57Zm-80 80v-170l528-527q12-11 26.5-17t30.5-6q16 0 31
+          6t26 18l55 56q12 11 17.5 26t5.5 30q0 16-5.5 30.5T817-647L290-120H120Zm640-584-56-56 56 56Zm-141
+          85-28-29 57 57-29-28Z"/></svg></button>
+        <button (click)="delete(row)" class="delete-btn"><svg xmlns="http://www.w3.org/2000/svg" height="24px"
+          viewBox="0 -960 960 960" width="24px" fill="#1f1f1f"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0
+          33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg></button>
+      </ng-template>
+    </ngx-datatable-column>
+  </ngx-datatable>
+}
+
+

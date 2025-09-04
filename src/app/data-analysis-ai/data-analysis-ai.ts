@@ -33,10 +33,11 @@ export class DataAnalysisAi implements OnInit {
 
   @ViewChild('chatWindow') chatWindow!: ElementRef;
 
-  private readonly apiKey = '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'; // 🔒 don't ship in prod
-  private readonly API_ENDPOINT = 'https://openrouter.ai/api/v1/chat/completions';
-  private readonly botModel = 'openai/gpt-oss-20b:free';
-
+  // === API Setup ===
+  private apiKey ='Place Your APIKey Here';   // Get One From OpenRouter Website For Free
+  private readonly API_ENDPOINT = 'https://openrouter.ai/api/v1/chat/completions';  // In Case Of OpenRouter
+  private botModel ='openai/gpt-oss-20b:free';  // You Can Change This Model
+  
   private readonly STORAGE_KEY = 'ai_chat_messages';
 
   // Popup state

@@ -40,10 +40,9 @@ export class AUGAnalysis {
   loading: boolean = false;
   showPopup = false;
   // === API Setup ===
-  //private apiKey = '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'; // 1st account
-  private apiKey ='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'; // 2nd account
-  private readonly API_ENDPOINT = 'https://openrouter.ai/api/v1/chat/completions';
-  private botModel ='openai/gpt-oss-20b:free';
+  private apiKey ='Place Your APIKey Here';   // Get One From OpenRouter Website For Free
+  private readonly API_ENDPOINT = 'https://openrouter.ai/api/v1/chat/completions';  // In Case Of OpenRouter
+  private botModel ='openai/gpt-oss-20b:free';  // You Can Change This Model
 
 
   ngOnInit() {
